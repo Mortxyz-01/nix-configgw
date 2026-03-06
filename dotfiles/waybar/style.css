@@ -1,0 +1,97 @@
+/* --- PENGATURAN FONT UMUM --- */
+* {
+    font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: transparent;
+    color: #eceff4;
+}
+
+/* --- GAYA KAPSUL UTAMA (MODUL) --- */
+/* Kode ini yang akan membungkus semua indikator dan grup laci menjadi kapsul */
+.modules-left > widget > *,
+.modules-center > widget > *,
+.modules-right > widget > * {
+    background-color: rgba(10, 25, 47, 0.85); /* Biru gelap transparan */
+    border: 1px solid rgba(136, 192, 208, 0.3); /* Garis tepi cyan tipis */
+    border-radius: 100px; /* Lengkungan kapsul sempurna */
+    padding: 2px 14px;
+    margin: 0px 4px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+    min-width: 40px; 
+}
+
+/* --- WARNA TEKS & ICON --- */
+#custom-terminal { color: #88c0d0; padding-right: 8px; }
+
+#workspaces button {
+    color: #88c0d0;
+    padding: 0 6px;
+    background: transparent;
+}
+
+#workspaces button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+}
+
+#workspaces button.active {
+    color: #a3be8c; 
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 100px;
+}
+
+#taskbar button { padding: 0 4px; }
+#clock { color: #8fbcbb; }
+#backlight, #pulseaudio, #network, #battery { color: #eceff4; }
+
+#pulseaudio.microphone.muted,
+#network.disconnected { color: #bf616a; }
+
+/* --- ANIMASI & LOGIKA BATERAI --- */
+@keyframes blink {
+    0% { color: #eceff4; background-color: rgba(10, 25, 47, 0.85); }
+    100% { color: #ffffff; background-color: rgba(191, 97, 106, 0.9); border-color: #bf616a; }
+}
+
+#battery.charging, #battery.plugged { color: #00ff00; }
+#battery.warning:not(.charging) {
+    animation-name: blink;
+    animation-duration: 0.8s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/* --- GAYA SLIDER (LACI) --- */
+scale {
+    min-height: 8px;
+    min-width: 70px;
+    margin: 0px 8px;
+}
+
+scale trough {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    min-height: 4px;
+}
+
+scale highlight {
+    background-color: #88c0d0;
+    border-radius: 10px;
+    min-height: 4px;
+}
+
+scale slider {
+    background-color: #eceff4;
+    border-radius: 100%;
+    min-width: 12px;
+    min-height: 12px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
+}

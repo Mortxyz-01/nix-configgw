@@ -1,0 +1,156 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "margin-top": 8,
+    "margin-left": 12,
+    "margin-right": 12,
+    "margin-bottom": 0,
+    "spacing": 8,
+
+    // --- KIRI POJOK ---
+    "modules-left": [
+        "custom/terminal",
+        "hyprland/workspaces",
+        "wlr/taskbar"
+    ],
+
+    // --- TENGAH ---
+    "modules-center": [
+        "clock"
+    ],
+
+    // --- KANAN POJOK ---
+    "modules-right": [
+        "group/brightness",
+        "pulseaudio#microphone",
+        "group/audio",
+        "network",
+        "battery"
+    ],
+
+    // --- PENGATURAN GRUP SLIDER (DRAWER) ---
+    "group/brightness": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 300,
+            "children-class": "slider",
+            "transition-left-to-right": false
+        },
+        "modules": [
+            "backlight",
+            "backlight/slider"
+        ]
+    },
+
+    "group/audio": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 300,
+            "children-class": "slider",
+            "transition-left-to-right": false
+        },
+        "modules": [
+            "pulseaudio",
+            "pulseaudio/slider"
+        ]
+    },
+
+    // --- PENGATURAN MODUL KIRI ---
+    "custom/terminal": {
+        "format": " ",
+        "on-click": "kitty",
+        "tooltip": false
+    },
+    
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "format-icons": {
+            "1": "1", "2": "2", "3": "3", "4": "4", "5": "5"
+        },
+        "persistent-workspaces": {
+            "*": 5
+        }
+    },
+    
+    "wlr/taskbar": {
+        "format": "{icon}",
+        "icon-size": 16,
+        "on-click": "activate",
+        "on-click-middle": "close",
+        "tooltip-format": "{title}"
+    },
+    
+    // --- PENGATURAN MODUL TENGAH ---
+    "clock": {
+        "format": "  {:%H:%M}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "month",
+            "mode-mon-col": 3,
+            "on-scroll": 1,
+            "format": {
+                "months": "<span color='#88c0d0'><b>{}</b></span>",
+                "days": "<span color='#eceff4'><b>{}</b></span>",
+                "today": "<span color='#bf616a'><b><u>{}</u></b></span>"
+            }
+        }
+    },
+
+    // --- PENGATURAN MODUL KANAN ---
+    "backlight": {
+        "format": "{icon} {percent}%",
+        "format-icons": ["󰃞", "󰃟", "󰃠"],
+        "tooltip": false
+    },
+
+    "backlight/slider": {
+        "min": 0,
+        "max": 100,
+        "orientation": "horizontal"
+    },
+
+    "pulseaudio#microphone": {
+        "format": " {volume}%",
+        "format-muted": " Muted",
+        "on-click": "pavucontrol -t 4",
+        "on-scroll-up": "pamixer --default-source -i 5",
+        "on-scroll-down": "pamixer --default-source -d 5"
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰝟 Muted",
+        "format-icons": {
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "on-click": "pavucontrol -t 3"
+    },
+
+    "pulseaudio/slider": {
+        "min": 0,
+        "max": 100,
+        "orientation": "horizontal"
+    },
+
+    "network": {
+        "format": "󰈀  LAN",
+        "format-wifi": "  {signalStrength}%",
+        "format-ethernet": "󰈀  LAN",
+        "format-disconnected": "󰖪  Off",
+        "tooltip-format": "{essid} ({signalStrength}%) | ⬇️ {bandwidthDownBytes} ⬆️ {bandwidthUpBytes}",
+        "on-click": "nm-connection-editor"
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": "  {capacity}%",
+        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+    }
+}
